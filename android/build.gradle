@@ -27,7 +27,14 @@ allprojects {
         maven { url 'https://maven.aliyun.com/repository/google' }
     }
     
+    configurations.all {
+        resolutionStrategy {
+            force 'com.android.tools.build:gradle:8.7.2'
+        }
+    }
+    
     tasks.withType(JavaCompile) {
+        options.compilerArgs = ['-source', '17', '-target', '17']
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
